@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,6 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Storage::get('posts.txt');
+        echo $posts;
+        exit;
         $view_data = [
             'posts' => [
                 //Title Content
@@ -52,7 +56,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        echo"page detail show. ID: $id";
+        echo "page detail show. ID: $id";
     }
 
     /**
