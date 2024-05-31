@@ -25,7 +25,9 @@
 
 <body>
     <div class="container mt-3">
-        <h1>LaraProject</h1>
+        <h1>LaraProject
+            <a class="btn btn-success" href="{{ url('posts/create') }}">Create Post</a>
+        </h1>
         <h2>Post</h2>
         @php($number = 1)
         <div class="blog">
@@ -37,12 +39,12 @@
                         <p class="card-text">{{ $post[2] }}</p>
                         <p class="card-text"><small class="text-body-secondary">Last updated at
                                 {{ date('d M Y H:i', strtotime($post[3])) }}</small></p>
-                        <a href="{{url("posts/$post[0]")}}" class="button btn btn-primary">Selanjutnya</a>
+                        <a href="{{ url("posts/$post[0]") }}" class="button btn btn-primary">Selanjutnya</a>
                     </div>
                 </div>
+                @php($number++)
+            @endforeach
         </div>
-        @php($number++)
-        @endforeach
     </div>
 </body>
 
