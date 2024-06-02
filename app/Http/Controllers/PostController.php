@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -23,6 +24,7 @@ class PostController extends Controller
 
         $posts = DB::table('posts')
             ->select('id', 'title', 'content', 'created_at')
+            ->where('active',true)
             ->get();
         $view_data = [
             'posts' => $posts
