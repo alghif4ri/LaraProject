@@ -33,6 +33,9 @@ class PostController extends Controller
         // ];
 
         // Eloquent
+
+        // $posts = Post::Active()->withTrashed()->get();  //menampilkan semua post termasuk yang telah dihapus dengan softDeletes
+
         $posts = Post::Active()->get();
         $view_data = [
             'posts' => $posts
