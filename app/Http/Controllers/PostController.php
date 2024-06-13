@@ -92,11 +92,9 @@ class PostController extends Controller
         // ]);
 
         // Eloquent
-        Post::insert([
-            'title' => $title,
-            'content' => $content,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+        Post::create([
+            'title'     => $title,
+            'content'   => $content,
         ]);
         return redirect('posts');
     }
