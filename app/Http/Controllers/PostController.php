@@ -80,7 +80,16 @@ class PostController extends Controller
 
         // Storage::write('posts.txt', $posts);
 
-        DB::table('posts')->insert([
+        // Query Builder
+        // DB::table('posts')->insert([
+        //     'title' => $title,
+        //     'content' => $content,
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s')
+        // ]);
+
+        // Eloquent
+        Post::insert([
             'title' => $title,
             'content' => $content,
             'created_at' => date('Y-m-d H:i:s'),
@@ -111,10 +120,14 @@ class PostController extends Controller
         //     'post' => $selected_post
         // ];
 
-        $post = DB::table('posts')
-            ->select('id', 'title', 'content', 'created_at')
-            ->where('id',  $id)
-            ->first();
+        // Query Builder
+        // $post = DB::table('posts')
+        //     ->select('id', 'title', 'content', 'created_at')
+        //     ->where('id',  $id)
+        //     ->first();
+
+        // Eloquent
+        $post = Post::where('id',  $id)->first();
         $view_data = [
             'post' => $post
         ];
@@ -130,10 +143,14 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = DB::table('posts')
-            ->select('id', 'title', 'content', 'created_at')
-            ->where('id', $id)
-            ->first();
+        // Query Builder
+        // $post = DB::table('posts')
+        //     ->select('id', 'title', 'content', 'created_at')
+        //     ->where('id', $id)
+        //     ->first();
+
+        // Eloquent
+        $post = Post::where('id', $id)->first();
         $view_data = [
             'post' => $post
         ];
@@ -153,9 +170,17 @@ class PostController extends Controller
         $title = $request->input('title');
         $content = $request->input('content');
 
+        // Query Builder
+        // DB::table('posts')
+        //     ->where('id', $id)
+        //     ->update([
+        //         'title' => $title,
+        //         'content' => $content,
+        //         'updated_at' => date('Y-m-d H:i:s')
+        //     ]);
 
-        DB::table('posts')
-            ->where('id', $id)
+        // Eloquent
+        Post::where('id', $id)
             ->update([
                 'title' => $title,
                 'content' => $content,
@@ -173,8 +198,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('posts')
-            ->where('id', $id)
+        // Query Builder
+        // DB::table('posts')
+        //     ->where('id', $id)
+        //     ->delete();
+
+        // Eloquent
+        Post::where('id', $id)
             ->delete();
 
         return redirect('posts');
