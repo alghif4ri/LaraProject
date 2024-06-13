@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +23,17 @@ class PostController extends Controller
         //     'posts' => $posts
         // ];
 
-        $posts = DB::table('posts')
-            ->select('id', 'title', 'content', 'created_at')
-            ->where('active',true)
-            ->get();
+        // Query Builder
+        // $posts = DB::table('posts')
+        //     ->select('id', 'title', 'content', 'created_at')
+        //     ->where('active',true)
+        //     ->get();
+        // $view_data = [
+        //     'posts' => $posts
+        // ];
+
+        // Eloquent
+        $posts = Post::Active()->get();
         $view_data = [
             'posts' => $posts
         ];
