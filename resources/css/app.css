@@ -1,0 +1,18 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.blog {
+    padding: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+small {
+    color: gray;
+}

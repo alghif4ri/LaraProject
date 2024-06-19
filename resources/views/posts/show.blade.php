@@ -17,5 +17,6 @@
             </div>
         @endforeach
     </article>
+    <i class="bi bi-xbox"></i>
     <a href="{{ url('posts') }}">Kembali</a>
 @endsection

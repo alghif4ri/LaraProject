@@ -1,6 +1,7 @@
 <?php
 
 // use App\Http\Controllers\HelloController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('hello', 'App\Http\Controllers\HelloController@index');
 // Route::post('hello', [HelloController::class, 'create']);
@@ -25,6 +26,10 @@ Route::get('/', function () {
 // Route::get('world', [HelloController::class, 'world_message']);
 
 // Route::resource('posts', PostController::class);
+Route::get('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'authenticate']);
+
+
 Route::post('posts', [PostController::class, 'store']);
 Route::get('posts', [PostController::class, 'index']);
 ROute::get('posts/create', [PostController::class, 'create']);

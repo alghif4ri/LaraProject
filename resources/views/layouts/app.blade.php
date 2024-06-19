@@ -12,6 +12,25 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <style>
+        body,
+        html {
+            height: 100%;
+        }
+        
+
+
+        .bg {
+            height: 100%;
+            background-color: #f8f9fa;
+        }
+
+        .form-login {
+            /* width: 100%; */
+            /* max-width: 600px; */
+            /* padding: 15px; */
+            /* margin: auto; */
+        }
+
         .blog {
             padding: 5px;
             border-bottom: 1px solid lightgray;
@@ -21,6 +40,7 @@
             color: gray;
         }
     </style>
+    
 </head>
 
 <body>
@@ -29,7 +49,7 @@
 
         @yield('content')
 
-    @include('layouts.app.footer')
+        @include('layouts.app.footer')
     </div>
 </body>
 </html>
