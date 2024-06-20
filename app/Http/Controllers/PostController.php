@@ -21,7 +21,7 @@ class PostController extends Controller
         if (!Auth::check()) {
             return redirect('login');
         }
-
+        
         $posts = Post::Active()->get();
         $view_data = [
             'posts' => $posts

@@ -11,12 +11,18 @@
     <script src="{{ asset('bootstrap-5/js/bootstrap.bundle.min.js') }}"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.tiny.cloud/1/e2sv9min4wkshu03iwvmzx60fylvjpintp9bfx29n2rn3zjd/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#content'
+      });
+    </script>
     <style>
         body,
         html {
             height: 100%;
         }
-        
+
 
 
         .bg {
@@ -40,7 +46,7 @@
             color: gray;
         }
     </style>
-    
+
 </head>
 
 <body>
