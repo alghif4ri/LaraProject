@@ -10,14 +10,18 @@
 
 
             <div class="card col-md-4 m-5 pb-5">
-                <h1 class="text-center">Login</h1>
+                <h1 class="text-center">Register</h1>
                 @if (session()->has('error_message'))
                     <div class="alert alert-danger">
                         {{ session()->get('error_message') }}
                     </div>
                 @endif
-                <form method="POST" action="{{ url('login') }}">
+                <form method="POST" action="{{ url('register') }}">
                     @csrf
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control id="name" name="name">
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control id="email" name="email">
@@ -26,8 +30,12 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password">
                     </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">re-type Password</label>
+                        <input type="password" class="form-control" id="password" name="password_confirmation">
+                    </div>
                     <div class="d-flex flex-wrap justify-content-between">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
 
                 </form>
