@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Mail\BlogPosted;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+
 
 class PostController extends Controller
 {
@@ -21,7 +24,7 @@ class PostController extends Controller
         if (!Auth::check()) {
             return redirect('login');
         }
-        
+
         $posts = Post::Active()->get();
         $view_data = [
             'posts' => $posts
@@ -60,10 +63,12 @@ class PostController extends Controller
         $content = $request->input('content');
 
 
-        Post::create([
+        $post =  Post::create([
             'title'     => $title,
             'content'   => $content,
         ]);
+
+        Mail::to(Auth::user()->email)->send(new BlogPosted($post));
         return redirect('posts');
     }
 
