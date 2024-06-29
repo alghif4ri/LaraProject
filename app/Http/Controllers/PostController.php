@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Http;
 
 
 class PostController extends Controller
@@ -69,6 +70,8 @@ class PostController extends Controller
         ]);
 
         Mail::to(Auth::user()->email)->send(new BlogPosted($post));
+
+        $this->notify_telegram($post);
         return redirect('posts');
     }
 
@@ -160,5 +163,21 @@ class PostController extends Controller
             ->delete();
 
         return redirect('posts');
+    }
+
+    private function notify_telegram($post)
+    {
+        $api_token = "7299302463:AAHU3p4SKBhT4m4kiW_xhfEUPNCqIzsEz5M";
+        $url = "https://api.telegram.org/bot{$api_token}/sendMessage";
+        $chat_id = "-4278968562";
+        $content = "New Post, lets check it out! :<strong> \"{$post->title}\"</strong>";
+
+        $data = [
+            'chat_id' => $chat_id,
+            'text' => $content,
+            'parse_mode' => 'HTML'
+        ];
+
+        Http::post($url, $data);
     }
 }
